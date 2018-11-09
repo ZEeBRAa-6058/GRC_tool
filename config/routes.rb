@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  get 'static_pages/home'
-  get 'static_pages/help'
+  root 'grc_tools#home'
+  get 'grc_tools/home'
+  get 'grc_tools/help'
+  get 'grc_tools/about'
+  resources :gacha_contents
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'application#hello'
 end

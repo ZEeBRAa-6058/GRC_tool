@@ -1,5 +1,7 @@
 {
   "name": "GRCTool",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "uikit": "^3.0.0-rc.21"
+  }
 }
