@@ -1,0 +1,50 @@
+<%= form_with(model: gacha_content, local: true) do |form| %>
+  <% if gacha_content.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(gacha_content.errors.count, "error") %> prohibited this gacha_content from being saved:</h2>
+
+      <ul>
+      <% gacha_content.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="uk-form-horizontal uk-margin-large">
+    <div class="uk-margin">
+      <label class="uk-form-label" for="form-horizontal-text">日付</label>
+      <div class="uk-form-controls">
+        <%= form.date_field :lucky_day, class: 'uk-input uk-form-width-large'  %>
+      </div>
+    </div>      
+    <div class="uk-margin">
+      <label class="uk-form-label" for="form-horizontal-text">レア度</label>
+      <div class="uk-form-controls">
+          <%= form.select :rarity, { 'SSR' => 'SSR', 'SR' => 'SR', 'R' => 'R'}, {}, class: 'uk-select uk-form-width-large' %>
+      </div>
+    </div>
+    <div class="uk-margin">
+      <label class="uk-form-label" for="form-horizontal-text">属性</label>
+      <div class="uk-form-controls">
+          <%= form.select :mark, { '火' => '火', '水' => '水', '土' => '土', '風' => '風', '光' => '光', '闇' => '闇' }, {}, class: 'uk-select uk-form-width-large' %>
+      </div>
+    </div>
+    <div class="uk-margin">
+      <label class="uk-form-label" for="form-horizontal-text">名前</label>
+      <div class="uk-form-controls">
+        <%= form.text_field :name, class: 'uk-input uk-form-width-large' %>
+      </div>
+    </div>
+    <div class="uk-margin">
+      <label class="uk-form-label" for="form-horizontal-text">何連？</label>
+      <div class="uk-form-controls">
+        <%= form.select :how_many, { '単発' => '単発', '10連' => '10連', '天井交換' => '天井交換'}, {}, class: 'uk-select uk-form-width-large' %>
+      </div>
+    </div>
+    <div class="uk-margin">
+      <div class="uk-form-controls"> 
+        <%= form.submit nil, class: 'uk-button uk-button-small uk-button-primary uk-width-large' %>
+      </div>
+    </div>
+<% end %>

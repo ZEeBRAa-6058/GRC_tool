@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rarity: MyString
+  mark: MyString
+  name: MyString
+  how_many: 1
+  lucky_day: 
+
+two:
+  rarity: MyString
+  mark: MyString
+  name: MyString
+  how_many: 1
+  lucky_day: 
