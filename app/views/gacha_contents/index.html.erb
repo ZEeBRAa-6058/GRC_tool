@@ -13,6 +13,7 @@
               <th class='uk-width-small'><%= sortable 'lucky_day', '日付' %></th>
               <th class='uk-width-small'><%= sortable 'user', '所持者' %></th>
               <th class='uk-width-small'><%= sortable 'rarity', 'レア度' %></th>
+              <th class='uk-width-small'><%= sortable 'mark', '属性' %></th>
               <th><%= sortable 'name', '名前' %></th>
               <th class='uk-width-small'><%= sortable 'how_many', '何連' %></th>
             </tr>
@@ -23,6 +24,7 @@
               <td><%= gc.lucky_day.strftime('%Y年%m月%d日') %></td>
               <td><%= gc.user.user_name %></td>
               <td><%= gc.rarity %></td>
+              <td><%= gc.mark %></td>
               <td><%= gc.name %></td>
               <td><%= gc.how_many %></td>
               <td><%= link_to '編集', edit_gacha_content_path(gc) %></td>
