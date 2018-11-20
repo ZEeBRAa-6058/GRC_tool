@@ -15,7 +15,7 @@
     <div class="uk-margin">
       <label class="uk-form-label" for="form-horizontal-text">日付</label>
       <div class="uk-form-controls">
-        <%= form.date_field :lucky_day, class: 'uk-input uk-form-width-large'  %>
+        <%= form.date_field :lucky_day, value: Time.now.strftime('%Y-%m-%d'), class: 'uk-input uk-form-width-large'  %>
       </div>
     </div>      
     <div class="uk-margin">
@@ -41,6 +41,11 @@
       <div class="uk-form-controls">
         <%= form.select :how_many, { '単発' => '単発', '10連' => '10連', '天井交換' => '天井交換'}, {}, class: 'uk-select uk-form-width-large' %>
       </div>
+    <div class="uk-margin">
+      <label class="uk-form-label" for="form-horizontal-text">所持者</label>
+      <div class="uk-form-controls">
+        <%= form.collection_select :user_id, User.all, :id, :user_name, { include_blank: '選択してね！' }, class: 'uk-select uk-form-width-large' %>
+    </div>
     </div>
     <div class="uk-margin">
       <div class="uk-form-controls"> 

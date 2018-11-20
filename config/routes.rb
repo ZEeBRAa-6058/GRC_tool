@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :users
   root 'grc_tools#home'
   get 'grc_tools/home'
   get 'grc_tools/help'

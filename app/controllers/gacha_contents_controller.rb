@@ -1,5 +1,6 @@
 class GachaContentsController < ApplicationController
   before_action :set_gacha_content, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:index, :new]
   helper_method :sort_column, :sort_direction
 
   # GET /gacha_contents
@@ -16,7 +17,7 @@ class GachaContentsController < ApplicationController
 
   # GET /gacha_contents/new
   def new
-    @gacha_content = GachaContent.new
+    @gacha_content = GachaContent.new(user_id: @user.first)
   end
 
   # GET /gacha_contents/1/edit
@@ -28,25 +29,24 @@ class GachaContentsController < ApplicationController
   def create
     @gacha_content = GachaContent.new(gacha_content_params)
 
-      if @gacha_content.save
-        redirect_to gacha_contents_path
-      else
-        flash.now[:alert] = @event.error_message
-        render :new
-      end
+    if @gacha_content.save
+      redirect_to gacha_contents_path
+    else
+      @gacha_content.valid?
+      flash.now[:alert] = @gacha_content.errors.full_messages
+      render :new
+    end
   end
 
   # PATCH/PUT /gacha_contents/1
   # PATCH/PUT /gacha_contents/1.json
   def update
-    respond_to do |format|
-      if @gacha_content.update(gacha_content_params)
-        format.html { redirect_to @gacha_content, notice: 'Gacha content was successfully updated.' }
-        format.json { render :index, status: :ok, location: @gacha_content }
-      else
-        format.html { render :edit }
-        format.json { render json: @gacha_content.errors, status: :unprocessable_entity }
-      end
+    if @gacha_content.update(gacha_content_params)
+      redirect_to gacha_contents_path
+    else
+      @gacha_content.valid?
+      flash.now[:alert] = @gacha_content.errors.full_messages
+      render :edit
     end
   end
 
@@ -66,10 +66,14 @@ class GachaContentsController < ApplicationController
       @gacha_content = GachaContent.find(params[:id])
     end
 
+    def set_user
+      @user = User.all
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def gacha_content_params
       params.require(:gacha_content)
-            .permit(:rarity, :mark, :name, :how_many, :lucky_day)
+            .permit(:rarity, :mark, :name, :how_many, :lucky_day, :user_id)
     end
 
     def sort_direction

@@ -1,28 +1,36 @@
 <div>
-  <h3>Gacha Contents</h3>
-  <%= link_to 'New Gacha Content', new_gacha_content_path, class: 'uk-button uk-button-default uk-button-small' %>
+  <h3>Gacha Contents Tool</h3>
+  <%= link_to 'ガチャ結果を入力する', new_gacha_content_path, class: 'uk-button uk-button-default uk-button-small' %>
+  <%= link_to 'ユーザー登録', new_user_path, class: 'uk-button uk-button-default uk-button-small' %>
 
-  <table class='uk-table uk-table-hover uk-table-divider table table-striped table-bordered table-hover'>
-         <thead>
-          <tr>
-            <th class='uk-width-small'><%= sortable 'lucky_day', '日付' %></th>
-            <th><%= sortable 'rarity', 'レア度' %></th>
-            <th><%= sortable 'name', '名前' %></th>
-            <th><%= sortable 'how_many', '何連' %></th>
-          </tr>
-      </thead>
-      <tbody>
+  <% if GachaContent.count == 0 %>
+    <p> ガチャ結果は何もありません </p>
+  <% else %>
+    <div class='uk-flex uk-flex-right uk-margin'>
+      <table class='uk-table uk-table-hover uk-table-divider uk-table-small table-striped table-bordered table-hover'>
+        <thead>
+            <tr>
+              <th class='uk-width-small'><%= sortable 'lucky_day', '日付' %></th>
+              <th class='uk-width-small'><%= sortable 'user', '所持者' %></th>
+              <th class='uk-width-small'><%= sortable 'rarity', 'レア度' %></th>
+              <th><%= sortable 'name', '名前' %></th>
+              <th class='uk-width-small'><%= sortable 'how_many', '何連' %></th>
+            </tr>
+        </thead>
+        <tbody>
           <% @gacha_contents.each do |gc| %>
             <tr>
-                <td><%= gc.lucky_day.strftime('%Y年%m月%d日') %></td>
-                <td><%= gc.rarity %></td>
-                <td><%= gc.name %></td>
-                <td><%= gc.how_many %></td>
-                <td><%= link_to 'Show', gc %></td>
-                <td><%= link_to 'Edit', edit_gacha_content_path(gc) %></td>
-                <td><%= link_to 'Destroy', gc, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= gc.lucky_day.strftime('%Y年%m月%d日') %></td>
+              <td><%= gc.user.user_name %></td>
+              <td><%= gc.rarity %></td>
+              <td><%= gc.name %></td>
+              <td><%= gc.how_many %></td>
+              <td><%= link_to '編集', edit_gacha_content_path(gc) %></td>
+              <td><%= link_to '削除', gc, method: :delete, data: { confirm: 'ガチャ結果を削除しますか？' } %></td>
             </tr>
           <% end %>
-      </tbody>
-  </table>
+        </tbody>
+      </table>
+    </div>
+  <% end%>
 </div>

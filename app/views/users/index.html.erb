@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h3>ユーザー登録</h3>
+<div class="uk-grid-small" uk-grid>
+  <div class="uk-background-muted uk-padding">
+    <table>
+      <thead>
+        <tr>
+          <th>ユーザー／</th>
+          <th>コメント</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.user_name %></td>
+            <td><%= user.string %></td>
+            <td><%= link_to '照会', user %></td>
+            <td><%= link_to '編集', edit_user_path(user) %></td>
+            <td><%= link_to '削除', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="uk-background-muted uk-padding">
+  <%= link_to '新しいユーザーを追加する', new_user_path, class: 'uk-button uk-button-default uk-button-small' %>
+  <br>
+  <%= link_to 'ガチャ結果へ戻る', gacha_contents_path, class: 'uk-button uk-button-default uk-button-small' %>
+  </div>
