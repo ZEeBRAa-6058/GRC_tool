@@ -20,7 +20,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       post users_url, params: { user: { string: @user.string, user_name: @user.user_name } }
     end
 
-    assert_redirected_to user_url(User.last)
+    assert_redirected_to gacha_contents_path
   end
 
   test "should show user" do

@@ -11,7 +11,7 @@
         <thead>
             <tr>
               <th class='uk-width-small'><%= sortable 'lucky_day', '日付' %></th>
-              <th class='uk-width-small'><%= sortable 'user', '所持者' %></th>
+              <th class='uk-width-small'><%= sortable 'user_id', '所持者' %></th>
               <th class='uk-width-small'><%= sortable 'rarity', 'レア度' %></th>
               <th class='uk-width-small'><%= sortable 'mark', '属性' %></th>
               <th class='uk-width-medium'><%= sortable 'name', '名前' %></th>
@@ -27,8 +27,8 @@
               <td><%= gc.mark %></td>
               <td><%= gc.name %></td>
               <td><%= gc.how_many %></td>
-              <td><%= link_to '編集', edit_gacha_content_path(gc) %></td>
-              <td><%= link_to '削除', gc, method: :delete, data: { confirm: 'ガチャ結果を削除しますか？' } %></td>
+              <td><%= link_to '編集', edit_gacha_content_path(gc), class: "uk-button uk-button-default" %>
+                  <%= link_to '削除', gc, method: :delete, data: { confirm: 'ガチャ結果を削除しますか？' }, class: "uk-button uk-button-default" %></td>
             </tr>
           <% end %>
         </tbody>
