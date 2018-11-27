@@ -1,15 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  user: one
   rarity: MyString
   mark: MyString
   name: MyString
   how_many: 1
-  lucky_day: 
+  lucky_day: <%= Time.zone.today %>
 
 two:
+  user: one
   rarity: MyString
   mark: MyString
   name: MyString
   how_many: 1
-  lucky_day: 
+  lucky_day: <%= Time.zone.today %>

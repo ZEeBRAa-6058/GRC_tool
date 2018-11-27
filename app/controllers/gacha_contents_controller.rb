@@ -25,7 +25,6 @@ class GachaContentsController < ApplicationController
   end
 
   # POST /gacha_contents
-  # POST /gacha_contents.json
   def create
     @gacha_content = GachaContent.new(gacha_content_params)
 
@@ -39,7 +38,6 @@ class GachaContentsController < ApplicationController
   end
 
   # PATCH/PUT /gacha_contents/1
-  # PATCH/PUT /gacha_contents/1.json
   def update
     if @gacha_content.update(gacha_content_params)
       redirect_to gacha_contents_path
