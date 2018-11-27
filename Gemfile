@@ -66,3 +66,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "rack", ">= 2.0.6"
+gem 'kaminari'

@@ -1,11 +1,13 @@
 <div>
-  <h3>Gacha Contents Tool</h3>
-  <%= link_to 'ガチャ結果を入力する', new_gacha_content_path, class: 'uk-button uk-button-default uk-button-small' %>
-  <%= link_to 'ユーザー登録', new_user_path, class: 'uk-button uk-button-default uk-button-small' %>
+  <div class='uk-text-large'>Gacha Contents Tool
+    <%= link_to 'ガチャ結果を入力する', new_gacha_content_path, class: 'uk-button uk-button-default uk-button-small' %>
+    <%= link_to 'ユーザー登録', new_user_path, class: 'uk-button uk-button-default uk-button-small' %>
+  </div>
 
   <% if GachaContent.count == 0 %>
     <p> ガチャ結果は何もありません </p>
   <% else %>
+    <%= paginate @gacha_contents %>
     <div class='uk-flex uk-flex-right uk-margin'>
       <table class='uk-table uk-table-hover uk-table-divider uk-table-small table-striped table-bordered table-hover'>
         <thead>
@@ -16,6 +18,7 @@
               <th class='uk-width-small'><%= sortable 'mark', '属性' %></th>
               <th class='uk-width-medium'><%= sortable 'name', '名前' %></th>
               <th class='uk-width-small'><%= sortable 'how_many', '何連' %></th>
+              <th></th>
             </tr>
         </thead>
         <tbody>
@@ -34,5 +37,6 @@
         </tbody>
       </table>
     </div>
+      <%= paginate @gacha_contents %>
   <% end%>
 </div>

@@ -7,7 +7,7 @@ class GachaContentsController < ApplicationController
   # GET /gacha_contents.json
   def index
     @gacha_contents = GachaContent.all
-    @gacha_contents = GachaContent.all.order(sort_column + ' ' + sort_direction)
+    @gacha_contents = GachaContent.page(params[:page]).order(sort_column + ' ' + sort_direction)
   end
 
   # GET /gacha_contents/1
