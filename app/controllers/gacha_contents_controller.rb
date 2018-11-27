@@ -17,7 +17,7 @@ class GachaContentsController < ApplicationController
 
   # GET /gacha_contents/new
   def new
-    @gacha_content = GachaContent.new(user_id: @user.first)
+    @gacha_content = GachaContent.new(lucky_day: Time.now)
   end
 
   # GET /gacha_contents/1/edit
