@@ -2,7 +2,7 @@ class GrcToolsController < ApplicationController
   def home
   end
 
-  def help
+  def release_notes
   end
 
   def about

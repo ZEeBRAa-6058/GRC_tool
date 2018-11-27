@@ -2,6 +2,7 @@
   <div class='uk-text-large'>Gacha Contents Tool
     <%= link_to 'ガチャ結果を入力する', new_gacha_content_path, class: 'uk-button uk-button-default uk-button-small' %>
     <%= link_to 'ユーザー登録', new_user_path, class: 'uk-button uk-button-default uk-button-small' %>
+    <%= link_to 'アップデート内容', grc_tools_release_notes_path, class: 'uk-align-right uk-button uk-button-default uk-button-small' %>
   </div>
 
   <% if GachaContent.count == 0 %>
