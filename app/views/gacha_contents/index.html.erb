@@ -33,9 +33,9 @@
               <td><%= gc.name %></td>
               <td><%= gc.how_many %></td>
               <td>
-                <%= link_to '編集', edit_gacha_content_path(gc), class: "uk-button uk-button-default" %>
+                <%= link_to '編集', edit_gacha_content_path(gc), class: "uk-button uk-button-default uk-button-small" %>
                 <%= link_to '削除', gc, method: :delete, data: { confirm: 'ガチャ結果を削除しますか？' },
-                                        class: "uk-button uk-button-default" %>
+                                        class: "uk-button uk-button-default uk-button-small" %>
               </td>
             </tr>
           <% end %>
