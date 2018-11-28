@@ -1,8 +1,9 @@
 <div>
   <div class='uk-text-large'>Gacha Contents Tool
-    <%= link_to 'ガチャ結果を入力する', new_gacha_content_path, class: 'uk-button uk-button-default uk-button-small' %>
+    <%= link_to '結果入力', new_gacha_content_path, class: 'uk-button uk-button-default uk-button-small' %>
     <%= link_to 'ユーザー登録', new_user_path, class: 'uk-button uk-button-default uk-button-small' %>
-    <%= link_to 'アップデート内容', grc_tools_release_notes_path, class: 'uk-align-right uk-button uk-button-default uk-button-small' %>
+    <%= link_to 'アップデート内容', grc_tools_release_notes_path, class: 'uk-button uk-button-default uk-button-small' %>
+    <%= link_to '使用方法', grc_tools_about_path, class: 'uk-button uk-button-default uk-button-small' %>
   </div>
 
   <% if GachaContent.count == 0 %>
@@ -31,13 +32,16 @@
               <td><%= gc.mark %></td>
               <td><%= gc.name %></td>
               <td><%= gc.how_many %></td>
-              <td><%= link_to '編集', edit_gacha_content_path(gc), class: "uk-button uk-button-default" %>
-                  <%= link_to '削除', gc, method: :delete, data: { confirm: 'ガチャ結果を削除しますか？' }, class: "uk-button uk-button-default" %></td>
+              <td>
+                <%= link_to '編集', edit_gacha_content_path(gc), class: "uk-button uk-button-default" %>
+                <%= link_to '削除', gc, method: :delete, data: { confirm: 'ガチャ結果を削除しますか？' },
+                                        class: "uk-button uk-button-default" %>
+              </td>
             </tr>
           <% end %>
         </tbody>
       </table>
     </div>
-      <%= paginate @gacha_contents %>
+    <%= paginate @gacha_contents %>
   <% end%>
 </div>
