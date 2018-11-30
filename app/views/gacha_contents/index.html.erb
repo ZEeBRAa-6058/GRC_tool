@@ -8,7 +8,7 @@
   </div>
 
   <% if GachaContent.count == 0 %>
-    <p> ガチャ結果は何もありません </p>
+    <p> ガチャ結果は何もありません(´・ω・`) </p>
   <% else %>
     <div class='uk-margin'>
       <%= paginate @gacha_contents %>
@@ -31,10 +31,10 @@
             <tr>
               <td><%= gc.lucky_day.strftime('%Y年%m月%d日') %></td>
               <td><%= gc.user.user_name %></td>
-              <td><%= gc.rarity %></td>
-              <td><%= gc.mark %></td>
+              <td><%= gc.rarity_label %></td>
+              <td><%= gc.mark_label %></td>
               <td><%= gc.name %></td>
-              <td><%= gc.how_many %></td>
+              <td><%= gc.how_many_label %></td>
               <td>
                 <%= link_to '編集', edit_gacha_content_path(gc), class: "uk-button uk-button-default uk-button-small" %>
                 <%= link_to '削除', gc, method: :delete, data: { confirm: 'ガチャ結果を削除しますか？' },

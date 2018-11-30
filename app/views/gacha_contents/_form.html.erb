@@ -21,13 +21,13 @@
     <div class="uk-margin">
       <label class="uk-form-label" for="form-horizontal-text">レア度</label>
       <div class="uk-form-controls">
-          <%= form.select :rarity, { 'SSR' => 'SSR', 'SR' => 'SR', 'R' => 'R'}, {}, class: 'uk-select uk-form-width-large' %>
+          <%= form.select :rarity, enum_select_options(GachaContent, :rarity), {}, class: 'uk-select uk-form-width-large' %>
       </div>
     </div>
     <div class="uk-margin">
       <label class="uk-form-label" for="form-horizontal-text">属性</label>
       <div class="uk-form-controls">
-          <%= form.select :mark, { '火' => '火', '水' => '水', '土' => '土', '風' => '風', '光' => '光', '闇' => '闇' }, {}, class: 'uk-select uk-form-width-large' %>
+          <%= form.select :mark, enum_select_options(GachaContent, :mark), {}, class: 'uk-select uk-form-width-large' %>
       </div>
     </div>
     <div class="uk-margin">
@@ -39,17 +39,19 @@
     <div class="uk-margin">
       <label class="uk-form-label" for="form-horizontal-text">何連？</label>
       <div class="uk-form-controls">
-        <%= form.select :how_many, { '単発' => '単発', '10連' => '10連', 'サプチケ' => 'サプチケ', 'スタレジェ' => 'スタレジェ', '無料10連' => '無料10連', '天井交換' => '天井交換'}, {}, class: 'uk-select uk-form-width-large' %>
+        <%= form.select :how_many, enum_select_options(GachaContent, :how_many), {}, class: 'uk-select uk-form-width-large' %>
+        ※取得した方法
       </div>
     <div class="uk-margin">
       <label class="uk-form-label" for="form-horizontal-text">所持者</label>
       <div class="uk-form-controls">
         <%= form.collection_select :user_id, User.all, :id, :user_name, { include_blank: '選択してね！' }, class: 'uk-select uk-form-width-large' %>
+        ※ユーザーを登録していないと入力できません！
     </div>
     </div>
     <div class="uk-margin">
       <div class="uk-form-controls"> 
-        <%= form.submit nil, class: 'uk-button uk-button-small uk-button-primary uk-width-large' %>
+        <%= form.submit 'ガチャ結果入力', class: 'uk-button uk-button-small uk-button-primary uk-width-large' %>
       </div>
     </div>
 <% end %>

@@ -1,0 +1,21 @@
+ja:
+  gacha_content:
+    mark:
+      fire: 火
+      water: 水
+      soil: 土
+      wind: 風
+      light: 光
+      dark:  闇
+    rarity:
+      ssr: SSR
+      sr: SR
+      r: R
+    how_many:
+      one_shot: 単発
+      ten_shot: 10連
+      surprise_ticket: サプチケ
+      star_regend: スタレジェ
+      free_ten_shot: 無料10連
+      celling_change: 天井交換
+    

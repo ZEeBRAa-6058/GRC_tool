@@ -2,16 +2,16 @@
 
 one:
   user: one
-  rarity: MyString
-  mark: MyString
+  rarity: 0
+  mark: 0
   name: MyString
   how_many: 1
   lucky_day: <%= Time.zone.today %>
 
 two:
   user: one
-  rarity: MyString
-  mark: MyString
+  rarity: 0
+  mark: 1
   name: MyString
   how_many: 1
   lucky_day: <%= Time.zone.today %>

@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      gacha_content: ガチャ結果
+    attributes:
+      gacha_content:
+        mark: 属性
+        # gacha_content/mark: 
+        #   fire: 火
+        #   water: 水
+        #   soil: 土
+        #   wind: 風
+        #   light: 光
+        #   dark:  闇

@@ -11,8 +11,8 @@ class GrcToolControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get help" do
-    get grc_tools_help_path
+  test "should get release notes" do
+    get grc_tools_release_notes_path
     assert_response :success
   end
 

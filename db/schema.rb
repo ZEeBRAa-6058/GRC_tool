@@ -13,10 +13,10 @@
 ActiveRecord::Schema.define(version: 2018_11_08_054311) do
 
   create_table "gacha_contents", force: :cascade do |t|
-    t.string "rarity", null: false
-    t.string "mark", null: false
+    t.integer "rarity", null: false
+    t.integer "mark", null: false
     t.string "name", null: false
-    t.string "how_many", null: false
+    t.integer "how_many", null: false
     t.datetime "lucky_day", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
