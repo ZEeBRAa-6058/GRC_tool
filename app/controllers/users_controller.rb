@@ -1,15 +1,20 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  # before_action :set_gacha_contents, only: :show
+  helper_method :sort_column, :sort_direction
+
 
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.all.page(params[:page])
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+    # @gacha_contents = GachaContent.find_by(user_id: @user)
+    @gacha_contents = GachaContent.page(params[:page]).where(user_id: @user).order(sort_column + ' ' + sort_direction)
   end
 
   # GET /users/new
@@ -68,5 +73,17 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:user_name, :string)
+    end
+
+    # def set_gacha_contents
+    #   @gacha_contents = GachaContent.find_by(user_id: @user)
+    # end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
+    end
+
+    def sort_column
+        GachaContent.column_names.include?(params[:sort]) ? params[:sort] : "lucky_day"
     end
 end

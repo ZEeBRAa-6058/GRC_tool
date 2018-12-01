@@ -1,14 +1,56 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User name:</strong>
+  <strong>ユーザー名:</strong>
   <%= @user.user_name %>
 </p>
-
 <p>
-  <strong>String:</strong>
+  <strong>コメント:</strong>
   <%= @user.string %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div>
+  <%= link_to 'ガチャ結果へ戻る', gacha_contents_path, class: 'uk-button uk-button-default uk-button-small' %>
+  <%= link_to 'ユーザー管理画面', users_path, class: 'uk-button uk-button-default uk-button-small' %>
+</div>
+
+<% if @gacha_contents.blank? %>
+    <p> ガチャ結果は何もありません(´・ω・`) </p>
+  <% else %>
+    <div class='uk-margin'>
+      <%= paginate @gacha_contents %>
+    </div>
+    <div class='uk-margin'>
+      <table class='uk-table uk-table-hover uk-table-divider uk-table-small table-striped table-bordered table-hover'>
+        <thead>
+            <tr>
+              <th class='uk-width-small'><%= sortable 'lucky_day', '日付' %></th>
+              <th class='uk-width-small'><%= sortable 'user_id', '所持者' %></th>
+              <th class='uk-width-small'><%= sortable 'rarity', 'レア度' %></th>
+              <th class='uk-width-small'><%= sortable 'mark', '属性' %></th>
+              <th class='uk-width-medium'><%= sortable 'name', '名前' %></th>
+              <th class='uk-width-small'><%= sortable 'how_many', '何連' %></th>
+              <th class='uk-width-small'>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+          <% @gacha_contents.each do |gc| %>
+            <tr>
+              <td><%= gc.lucky_day.strftime('%Y年%m月%d日') %></td>
+              <td><%= gc.user.user_name %></td>
+              <td><%= gc.rarity_label %></td>
+              <td><%= gc.mark_label %></td>
+              <td><%= gc.name %></td>
+              <td><%= gc.how_many_label %></td>
+              <td>
+                <%= link_to '編集', edit_gacha_content_path(gc), class: "uk-button uk-button-default uk-button-small" %>
+                <%= link_to '削除', gc, method: :delete, data: { confirm: 'ガチャ結果を削除しますか？' },
+                                        class: "uk-button uk-button-default uk-button-small" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <%= paginate @gacha_contents %>
+  <% end%>

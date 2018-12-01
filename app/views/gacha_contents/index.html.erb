@@ -2,7 +2,7 @@
   <div class='uk-visible@s'>
     <h3>Gacha Contents Tool</h3>
     <%= link_to '結果入力', new_gacha_content_path, class: 'uk-button uk-button-default uk-button-small' %>
-    <%= link_to 'ユーザー登録', new_user_path, class: 'uk-button uk-button-default uk-button-small' %>
+    <%= link_to 'ユーザー管理画面', users_path, class: 'uk-button uk-button-default uk-button-small' %>
     <%= link_to 'アップデート内容', grc_tools_release_notes_path, class: 'uk-button uk-button-default uk-button-small' %>
     <%= link_to '使用方法', grc_tools_about_path, class: 'uk-button uk-button-default uk-button-small' %>
   </div>
@@ -30,7 +30,7 @@
           <% @gacha_contents.each do |gc| %>
             <tr>
               <td><%= gc.lucky_day.strftime('%Y年%m月%d日') %></td>
-              <td><%= gc.user.user_name %></td>
+              <td><%= link_to gc.user.user_name, user_path(gc.user) %></td>
               <td><%= gc.rarity_label %></td>
               <td><%= gc.mark_label %></td>
               <td><%= gc.name %></td>

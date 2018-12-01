@@ -12,8 +12,7 @@ class GachaContentsController < ApplicationController
 
   # GET /gacha_contents/1
   # GET /gacha_contents/1.json
-  def show
-  end
+  def show;  end
 
   # GET /gacha_contents/new
   def new

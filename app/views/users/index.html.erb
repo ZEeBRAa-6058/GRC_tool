@@ -1,31 +1,36 @@
 <p id="notice"><%= notice %></p>
 
-<h3>ユーザー登録</h3>
-<div class="uk-grid-small" uk-grid>
-  <div class="uk-background-muted uk-padding">
-    <table>
-      <thead>
-        <tr>
-          <th>ユーザー／</th>
-          <th>コメント</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @users.each do |user| %>
-          <tr>
-            <td><%= user.user_name %></td>
-            <td><%= user.string %></td>
-            <td><%= link_to '照会', user %></td>
-            <td><%= link_to '編集', edit_user_path(user) %></td>
-            <td><%= link_to '削除', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-  <div class="uk-background-muted uk-padding">
+
+<div>
   <%= link_to '新しいユーザーを追加する', new_user_path, class: 'uk-button uk-button-default uk-button-small' %>
-  <br>
   <%= link_to 'ガチャ結果へ戻る', gacha_contents_path, class: 'uk-button uk-button-default uk-button-small' %>
-  </div>
+</div>
+
+<div class='uk-margin'>
+    <%= paginate @users %>
+</div>
+<div class='uk-margin'>
+  <table class='uk-table uk-table-hover uk-table-divider uk-table-small table-striped table-bordered table-hover'>
+    <thead>
+      <tr>
+        <th class='uk-width-small'>ユーザー</th>
+        <th class='uk-width-small'>コメント</th>
+        <th class='uk-width-small'>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.user_name %></td>
+          <td><%= user.string %></td>
+          <td>
+            <%= link_to '照会', user, class: "uk-button uk-button-default uk-button-small" %>
+            <%= link_to '編集', edit_user_path(user), class: "uk-button uk-button-default uk-button-small" %>
+            <%= link_to '削除', user, method: :delete, data: { confirm: 'Are you sure?' }, class: "uk-button uk-button-default uk-button-small" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<%= paginate @users %>
