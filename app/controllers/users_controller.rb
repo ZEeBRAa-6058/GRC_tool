@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: %i[show edit update destroy]
   # before_action :set_gacha_contents, only: :show
   helper_method :sort_column, :sort_direction
-
 
   # GET /users
   # GET /users.json
@@ -23,8 +24,7 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /users
   # POST /users.json
@@ -45,8 +45,8 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
+        format.html { redirect_to users_path, notice: 'ユーザーの更新に成功しました' }
+        format.json { render :index, status: :ok }
       else
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -65,25 +65,26 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:user_name, :string)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
 
-    # def set_gacha_contents
-    #   @gacha_contents = GachaContent.find_by(user_id: @user)
-    # end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params.require(:user).permit(:user_name, :string)
+  end
 
-    def sort_direction
-      %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
-    end
+  # def set_gacha_contents
+  #   @gacha_contents = GachaContent.find_by(user_id: @user)
+  # end
 
-    def sort_column
-        GachaContent.column_names.include?(params[:sort]) ? params[:sort] : "lucky_day"
-    end
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+  end
+
+  def sort_column
+    GachaContent.column_names.include?(params[:sort]) ? params[:sort] : 'lucky_day'
+  end
 end

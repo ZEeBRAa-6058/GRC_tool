@@ -1,6 +1,7 @@
-<h3>Editing User</h3>
+<h3>ユーザーを編集</h3>
 
 <%= render 'form', user: @user %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<div>
+  <%= link_to 'ユーザー管理画面', users_path, class: 'uk-button uk-button-default uk-button-small' %>
+</div>

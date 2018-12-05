@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GachaContent < ApplicationRecord
   # Associations
   belongs_to :user

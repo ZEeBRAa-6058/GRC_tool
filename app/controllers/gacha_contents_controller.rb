@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class GachaContentsController < ApplicationController
-  before_action :set_gacha_content, only: [:show, :edit, :update, :destroy]
-  before_action :set_user, only: [:index, :new]
+  before_action :set_gacha_content, only: %i[show edit update destroy]
+  before_action :set_user, only: %i[index new]
   helper_method :sort_column, :sort_direction
 
   # GET /gacha_contents
@@ -12,7 +14,7 @@ class GachaContentsController < ApplicationController
 
   # GET /gacha_contents/1
   # GET /gacha_contents/1.json
-  def show;  end
+  def show; end
 
   # GET /gacha_contents/new
   def new
@@ -20,8 +22,7 @@ class GachaContentsController < ApplicationController
   end
 
   # GET /gacha_contents/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /gacha_contents
   def create
@@ -58,26 +59,27 @@ class GachaContentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_gacha_content
-      @gacha_content = GachaContent.find(params[:id])
-    end
 
-    def set_user
-      @user = User.all
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_gacha_content
+    @gacha_content = GachaContent.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def gacha_content_params
-      params.require(:gacha_content)
-            .permit(:rarity, :mark, :name, :how_many, :lucky_day, :user_id)
-    end
+  def set_user
+    @user = User.all
+  end
 
-    def sort_direction
-      %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def gacha_content_params
+    params.require(:gacha_content)
+          .permit(:rarity, :mark, :name, :how_many, :lucky_day, :user_id)
+  end
 
-    def sort_column
-        GachaContent.column_names.include?(params[:sort]) ? params[:sort] : "name"
-    end
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+  end
+
+  def sort_column
+    GachaContent.column_names.include?(params[:sort]) ? params[:sort] : 'name'
+  end
 end
