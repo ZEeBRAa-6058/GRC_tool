@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     # @gacha_contents = GachaContent.find_by(user_id: @user)
-    @gacha_contents = GachaContent.page(params[:page]).where(user_id: @user).order(sort_column + ' ' + sort_direction)
+    @gacha_contents = GachaContent.order(lucky_day: 'DESC').page(params[:page]).where(user_id: @user).order(sort_column + ' ' + sort_direction)
   end
 
   # GET /users/new
